@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // task 1
+       class Person{
+        Name;
+        Age;
+         greet(name,Age){
+            console.log(`hi,my name is ${name} and I am ${Age} years old.`);
+         }
+       }
+
+       let res = new Person();
+       res.name;
+       res.Age;
+       res.greet("Alex",25);
+
+    //task 2 
+
+    class Student {
+    constructor(name, marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    getGrade() {
+        if (this.marks >= 90) return "A";
+        else if (this.marks >= 75) return "B";
+        else if (this.marks >= 50) return "C";
+        else return "Fail";
+    }
+}
+
+let s1 = new Student("Arun", 92);
+let s2 = new Student("Kiran", 68);
+
+console.log(s1.name, s1.getGrade()); 
+console.log(s2.name, s2.getGrade()); 
+
+///task 3
+
+class BankAccount {
+    constructor(accountHolder, balance) {
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+    }
+
+    deposit(amount) {
+        this.balance += amount;
+        console.log("Deposited:", amount);
+    }
+
+    withdraw(amount) {
+        if (amount > this.balance) {
+            console.log("Insufficient balance");
+        } else {
+            this.balance -= amount;
+            console.log("Withdrawn:", amount);
+        }
+    }
+
+    checkBalance() {
+        console.log("Balance:", this.balance);
+    }
+}
+
+let acc = new BankAccount("Ravi", 1000);
+acc.deposit(500);
+acc.withdraw(1000);
+acc.checkBalance();
+
+//task 4
+
+class Car {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+        this.isAvailable = true;
+    }
+
+    rentCar() {
+        this.isAvailable = false;
+        console.log(this.model, "rented");
+    }
+
+    returnCar() {
+        this.isAvailable = true;
+        console.log(this.model, "returned");
+    }
+}
+let car1 = new Car("Toyota", "Innova");
+let car2 = new Car("Honda", "City");
+
+car1.rentCar();
+car1.returnCar();
+
+//task 5
+
+class ShoppingCart {
+    constructor() {
+        this.items = [];
+    }
+
+    addItem(item) {
+        this.items.push(item);
+    }
+
+    removeItem(itemName) {
+        this.items = this.items.filter(item => item.name !== itemName);
+    }
+
+    getTotalPrice() {
+        return this.items.reduce((total, item) => total + item.price, 0);
+    }
+}
+
+
+let cart = new ShoppingCart();
+cart.addItem({ name: "Book", price: 200 });
+cart.addItem({ name: "Pen", price: 50 });
+
+cart.removeItem("Pen");
+
+console.log("Total:", cart.getTotalPrice()); 
+
+
+//inheritance
+
+// Task 1: Animal → Dog
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(this.name + " says: Woof!");
+    }
+}
+
+let dog = new Dog("Buddy");
+dog.speak();
+
+// Task 2: Employee → Manager
+
+
+class Employee {
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    getDetails() {
+        return "Name: " + this.name + ", Salary: " + this.salary;
+    }
+}
+
+class Manager extends Employee {
+    constructor(name, salary, department) {
+        super(name, salary);
+        this.department = department;
+    }
+
+    getDetails() {
+        return super.getDetails() + ", Department: " + this.department;
+    }
+}
+
+let manager = new Manager("Anil", 60000, "IT");
+console.log(manager.getDetails());
+
+// Task 3: Shape → Rectangle
+
+
+class Shape {
+    getArea() {
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(length, width) {
+        super();
+        this.length = length;
+        this.width = width;
+    }
+
+    getArea() {
+        return this.length * this.width;
+    }
+}
+
+let shape = new Shape();
+let rectangle = new Rectangle(10, 5);
+
+console.log(shape.getArea());
+console.log(rectangle.getArea());
+
+
+// Task 4: Vehicle → ElectricCar
+
+class Vehicle {
+    constructor(brand, speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    accelerate(value) {
+        this.speed += value;
+        console.log("Speed:", this.speed);
+    }
+}
+
+class ElectricCar extends Vehicle {
+    constructor(brand, speed, batteryLevel) {
+        super(brand, speed);
+        this.batteryLevel = batteryLevel;
+    }
+
+    chargeBattery() {
+        this.batteryLevel = 100;
+        console.log("Battery charged to 100%");
+    }
+}
+
+let car = new ElectricCar("Tesla", 50, 80);
+car.accelerate(20);
+car.chargeBattery();
+
+
+// Task 5: User → Admin
+
+
+class User {
+    constructor(username) {
+        this.username = username;
+    }
+
+    login() {
+        console.log(this.username + " logged in");
+    }
+}
+
+class Admin extends User {
+    login() {
+        console.log("Admin " + this.username + " logged in");
+    }
+
+    deleteUser(username) {
+        console.log("Deleted user:", username);
+    }
+}
+
+let admin = new Admin("SuperAdmin");
+admin.login();
+admin.deleteUser("User123");
+
+    </script>
+</body>
+</html>
