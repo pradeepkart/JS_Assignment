@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showAlert()">Click Me</button>
+    <p ondblclick="changeText(this)">Double click me</p>
+    <div onmouseover="mouseOver(this)" style="width:200px;height:100px;border:1px solid;">
+        Hover here
+    </div>
+    <div onmouseover="mouseOverr(this)" onmouseout="mouseOut(this)"
+     style="width:200px;height:100px;border:1px solid;">
+    Hover here
+</div>
+<input type="text" onkeydown="showKey(event)">
+<p id="output"></p>
+<input type="text" onkeyup="showValue(this)">
+<p id="result"></p>
+<form onsubmit="handleSubmit(event)">
+    <input type="text" id="name">
+    <button type="submit">Submit</button>
+</form>
+<select onchange="changeColor(this)">
+    <option value="">Select</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+</select>
+<input type="text" onfocus="focusInput(this)" onblur="blurInput(this)">
+<ul id="list">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Mango</li>
+</ul>
+
+<script>
+function showAlert() {
+    alert("Button clicked!");
+}
+function changeText(element) {
+    element.innerText = "Text changed!";
+}
+function mouseOver(div) {
+    div.style.backgroundColor = "red";
+}
+function mouseOverr(div) {
+    div.style.backgroundColor = "blue";
+}
+function mouseOut(div) {
+    div.style.backgroundColor = "white";
+}
+function showKey(e) {
+    document.getElementById("output").innerText = e.key;
+}
+function showValue(input) {
+    document.getElementById("result").innerText = input.value;
+}
+function handleSubmit(e) {
+    e.preventDefault();
+    alert("Submitted: " + document.getElementById("name").value);
+}
+function changeColor(select) {
+    document.body.style.backgroundColor = select.value;
+}
+function focusInput(input) {
+    input.style.border = "2px solid blue";
+}
+function blurInput(input) {
+    input.style.border = "2px solid red";
+}
+document.getElementById("list").addEventListener("click", function(e) {
+    if (e.target.tagName === "LI") {
+        alert(e.target.innerText);
+    }
+});
+</script>
+</body>
+</html>
