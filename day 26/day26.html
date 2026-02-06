@@ -1,0 +1,240 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+// 1. Private Balance (Encapsulation)
+
+class BankAccount {
+    #balance;
+
+    constructor(balance = 0) {
+        this.#balance = balance;
+    }
+
+    deposit(amount) {
+        if (amount > 0) this.#balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount > 0 && amount <= this.#balance) {
+            this.#balance -= amount;
+        } else {
+            console.log("Insufficient balance");
+        }
+    }
+
+    getBalance() {
+        return this.#balance;
+    }
+}
+
+let acc = new BankAccount(500);
+acc.deposit(200);
+acc.withdraw(100);
+console.log("Bank Balance:", acc.getBalance());
+
+// 2. User Password Protection
+
+class User {
+    #password;
+
+    constructor(username, password) {
+        this.username = username;
+        this.#password = password;
+    }
+
+    changePassword(oldPwd, newPwd) {
+        if (oldPwd === this.#password) {
+            this.#password = newPwd;
+            console.log("Password changed successfully");
+        } else {
+            console.log("Old password is wrong");
+        }
+    }
+}
+
+let u1 = new User("Pradeep", "1234");
+u1.changePassword("1234", "abcd");
+u1.changePassword("wrong", "newpass");
+
+// 3. Read-Only Property (brand cannot change)
+
+class Car {
+    constructor(brand, speed) {
+        Object.defineProperty(this, "brand", {
+            value: brand,
+            writable: false
+        });
+
+        this.speed = speed;
+    }
+
+    changeSpeed(value) {
+        this.speed = value;
+    }
+}
+
+let c1 = new Car("Toyota", 60);
+c1.changeSpeed(90);
+console.log("Car Brand:", c1.brand);
+console.log("Car Speed:", c1.speed);
+
+c1.brand = "Honda"; 
+console.log("Car Brand after change:", c1.brand);
+
+// 4. Calculator Add Method (Overloading)
+
+class Calculator {
+    add(...args) {
+        if (args.length === 2) {
+            return args[0] + args[1];
+        }
+
+        if (args.length === 3) {
+            return args[0] + args[1] + args[2];
+        }
+
+        if (args.length === 1 && Array.isArray(args[0])) {
+            return args[0].reduce((sum, n) => sum + n, 0);
+        }
+
+        return "Invalid input";
+    }
+}
+
+let cal = new Calculator();
+console.log("Add 2 nums:", cal.add(10, 20));
+console.log("Add 3 nums:", cal.add(10, 20, 30));
+console.log("Add array:", cal.add([1, 2, 3, 4]));
+
+// 5. Greeting Function (Overloading)
+
+class Greeting {
+    greet(name, time) {
+        if (arguments.length === 0) {
+            return "Hello!";
+        }
+
+        if (arguments.length === 1) {
+            return `Hello, ${name}!`;
+        }
+
+        return `Good ${time}, ${name}!`;
+    }
+}
+
+let g = new Greeting();
+console.log(g.greet());
+console.log(g.greet("Alice"));
+console.log(g.greet("Alice", "morning"));
+
+// 6. Shape Area (Overloading)
+
+class Shape {
+    area(a, b) {
+        if (arguments.length === 1) {
+            return a * a; // square
+        }
+
+        if (arguments.length === 2) {
+            return a * b; // rectangle
+        }
+
+        return 0;
+    }
+}
+
+let sh = new Shape();
+console.log("Square Area:", sh.area(5));
+console.log("Rectangle Area:", sh.area(5, 10));
+
+// 7. Animal Sounds (Overriding)
+
+class Animal {
+    speak() {
+        console.log("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log("Dog says: Woof!");
+    }
+}
+
+class Cat extends Animal {
+    speak() {
+        console.log("Cat says: Meow!");
+    }
+}
+
+let d = new Dog();
+let cat = new Cat();
+d.speak();
+cat.speak();
+
+// 8. Employee Salary (Override + Bonus)
+
+class Employee {
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    calculateSalary() {
+        return this.salary;
+    }
+}
+
+class Manager extends Employee {
+    constructor(name, salary, bonus) {
+        super(name, salary);
+        this.bonus = bonus;
+    }
+
+    calculateSalary() {
+        return this.salary + this.bonus;
+    }
+}
+
+let emp = new Employee("Ravi", 30000);
+let mgr = new Manager("Anil", 50000, 10000);
+
+console.log("Employee Salary:", emp.calculateSalary());
+console.log("Manager Salary:", mgr.calculateSalary());
+
+// 9. Notification System (Override send())
+
+class Notification {
+    send(message) {
+        console.log("Notification:", message);
+    }
+}
+
+class EmailNotification extends Notification {
+    send(message) {
+        console.log("Email Sent:", message);
+    }
+}
+
+class SMSNotification extends Notification {
+    send(message) {
+        console.log("SMS Sent:", message);
+    }
+}
+
+let email = new EmailNotification();
+let sms = new SMSNotification();
+
+email.send("Welcome to our website!");
+sms.send("Your OTP is 1234");
+
+    </script>
+</body>
+</html> -->
