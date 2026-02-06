@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+// setTimeout (5 tasks)
+
+// 1) Print "Hello World" after 3 seconds
+setTimeout(() => {
+    console.log("1) Hello World");
+}, 3000);
+
+
+// 2) Countdown from 5 to 1 using multiple setTimeout
+for (let i = 5; i >= 1; i--) {
+    setTimeout(() => {
+        console.log("2) Countdown:", i);
+    }, (6 - i) * 1000);
+}
+
+
+// 3) Loading... then Loaded after 2 seconds
+function loadData() {
+    console.log("3) Loading...");
+    setTimeout(() => {
+        console.log("3) Loaded");
+    }, 2000);
+}
+loadData();
+
+
+// 4) setTimeout inside loop unexpected behavior + fix
+
+for (var i = 1; i <= 3; i++) {
+    setTimeout(() => {
+        console.log("4) Wrong output:", i); // prints 4,4,4
+    }, 1000);
+}
+
+for (let j = 1; j <= 3; j++) {
+    setTimeout(() => {
+        console.log("4) Correct output:", j); // prints 1,2,3
+    }, 1000);
+}
+
+
+// 5) Cancel a setTimeout using clearTimeout
+let timeoutId = setTimeout(() => {
+    console.log("5) This will NOT run");
+}, 3000);
+
+clearTimeout(timeoutId);
+console.log("5) Timeout cancelled");
+
+// setInterval (5 tasks)
+
+
+// 1) Print "Hello" every 1 second
+let helloInterval = setInterval(() => {
+    console.log("Interval 1) Hello");
+}, 1000);
+
+
+setTimeout(() => {
+    clearInterval(helloInterval);
+    console.log("Interval 1) Stopped");
+}, 3000);
+
+
+// 2) Digital clock logs time every second
+let clockInterval = setInterval(() => {
+    console.log("Interval 2) Time:", new Date().toLocaleTimeString());
+}, 1000);
+
+
+setTimeout(() => {
+    clearInterval(clockInterval);
+    console.log("Interval 2) Clock stopped");
+}, 5000);
+
+
+// 3) Print numbers 1 to 5 using setInterval then stop
+let num = 1;
+let numInterval = setInterval(() => {
+    console.log("Interval 3) Number:", num);
+    num++;
+
+    if (num > 5) {
+        clearInterval(numInterval);
+        console.log("Interval 3) Done");
+    }
+}, 1000);
+
+
+// 4) Counter increases every second stops at 10
+let count = 1;
+let counterInterval = setInterval(() => {
+    console.log("Interval 4) Count:", count);
+    count++;
+
+    if (count > 10) {
+        clearInterval(counterInterval);
+        console.log("Interval 4) Counter stopped at 10");
+    }
+}, 1000);
+
+
+// 5) Start interval and stop after 5 seconds
+let interval5 = setInterval(() => {
+    console.log("Interval 5) Running...");
+}, 1000);
+
+setTimeout(() => {
+    clearInterval(interval5);
+    console.log("Interval 5) Stopped after 5 seconds");
+}, 5000);
+
+    </script> -->
+</body>
+</html>
