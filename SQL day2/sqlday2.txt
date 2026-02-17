@@ -1,0 +1,104 @@
+CREATE DATABASE college_db;
+USE college_db;
+CREATE TABLE Student (student_id INT PRIMARY KEY, name VARCHAR(50), age INT, course VARCHAR(50));
+SHOW TABLES;
+SELECT DATABASE();
+INSERT INTO Student VALUES (1, 'Pradeep', 20, 'BCA');
+INSERT INTO Student VALUES (2, 'Ravi', 21, 'BSC');
+INSERT INTO Student VALUES (3, 'Anu', 19, 'BA');
+
+SELECT * FROM Student;
+
+UPDATE Student SET age = 22 WHERE student_id = 2;
+
+DELETE FROM Student WHERE student_id = 3;
+
+ALTER TABLE Student ADD email VARCHAR(50);
+UPDATE student SET email = 'pk1908@gmail.com' WHERE student_id = 1;
+UPDATE student SET email = 'ravi@gmail.com' WHERE student_id = 2;
+
+INSERT into student value(3,'hema',22,'BCA','hema123@gmail.com');
+INSERT into student value(4,'rajesh',22,'BE','rajesh123@gmail.com');
+INSERT into student value(5,'karthi',22,'B.Tech','Karthi123@gmail.com');
+
+CREATE TABLE Staff (staff_id INT PRIMARY KEY,name VARCHAR(50),department VARCHAR(50),salary INT);
+
+INSERT INTO Staff VALUES (101, 'Suresh', 'Admin', 25000);
+INSERT INTO Staff VALUES (102, 'Kiran', 'Accounts', 30000);
+INSERT INTO Staff VALUES (103, 'Meena', 'HR', 28000);
+
+SELECT * FROM Staff;
+
+UPDATE Staff SET salary = 32000 WHERE staff_id = 102;
+
+DELETE FROM Staff WHERE staff_id = 103;
+
+ALTER TABLE Staff MODIFY name VARCHAR(100);
+
+CREATE TABLE Product (product_id INT PRIMARY KEY,product_name VARCHAR(50),price INT,quantity INT);
+
+SELECT * FROM  Product;
+
+INSERT INTO Product VALUES (201, 'Laptop', 55000, 5);
+INSERT INTO Product VALUES (202, 'Mouse', 500, 50);
+INSERT INTO Product VALUES (203, 'Keyboard', 1200, 30);
+
+UPDATE Product SET price = 60000 WHERE product_id = 201;
+
+DELETE FROM Product WHERE product_id = 202;
+
+ALTER TABLE Product DROP COLUMN quantity;
+
+USE college_db;
+
+CREATE TABLE Customer (customer_id INT PRIMARY KEY,name VARCHAR(50),city VARCHAR(50),phone VARCHAR(15));
+
+INSERT INTO Customer VALUES (301, 'Amit', 'Chennai', '9876543210');
+INSERT INTO Customer VALUES (302, 'Divya', 'Madurai', '9123456780');
+INSERT INTO Customer VALUES (303, 'Rahul', 'Coimbatore', '9000011111');
+
+SELECT * FROM Customer;
+
+UPDATE Customer SET city = 'Bangalore' WHERE customer_id = 302;
+
+DELETE FROM Customer WHERE customer_id = 303;
+
+ALTER TABLE Customer ADD email VARCHAR(50);
+
+UPDATE Customer SET email = 'amit@gmail.com' WHERE customer_id = 301;
+UPDATE Customer SET email = 'divya@gmail.com' WHERE customer_id = 302;
+SELECT * FROM Customer;
+
+CREATE TABLE Employee (emp_id INT PRIMARY KEY,name VARCHAR(50),designation VARCHAR(50),salary INT
+);
+
+INSERT INTO Employee VALUES (401, 'Ramesh', 'Developer', 45000);
+INSERT INTO Employee VALUES (402, 'Sita', 'Tester', 35000);
+INSERT INTO Employee VALUES (403, 'John', 'Manager', 65000);
+
+SELECT * FROM Employee;
+
+SHOW TABLES;
+
+DESC Student;
+DESC Staff;
+DESC Product;
+DESC Customer;
+DESC Employee;
+
+UPDATE Employee SET salary = 70000 WHERE emp_id = 403;
+
+DELETE FROM Employee WHERE emp_id = 402;
+
+ALTER TABLE Employee RENAME COLUMN name TO emp_name;
+
+
+
+
+
+
+
+
+
+
+
