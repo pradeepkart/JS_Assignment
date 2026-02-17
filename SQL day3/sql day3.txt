@@ -1,0 +1,246 @@
+CREATE DATABASE college_db;
+USE college_db;
+CREATE TABLE Student (student_id INT PRIMARY KEY, name VARCHAR(50), age INT, course VARCHAR(50));
+SHOW TABLES;
+SELECT DATABASE();
+INSERT INTO Student VALUES (1, 'Pradeep', 20, 'BCA');
+INSERT INTO Student VALUES (2, 'Ravi', 21, 'BSC');
+INSERT INTO Student VALUES (3, 'Anu', 19, 'BA');
+
+SELECT * FROM Student;
+
+UPDATE Student SET age = 22 WHERE student_id = 2;
+
+DELETE FROM Student WHERE student_id = 3;
+
+ALTER TABLE Student ADD email VARCHAR(50);
+UPDATE student SET email = 'pk1908@gmail.com' WHERE student_id = 1;
+UPDATE student SET email = 'ravi@gmail.com' WHERE student_id = 2;
+
+INSERT into student value(3,'hema',22,'BCA','hema123@gmail.com');
+INSERT into student value(4,'rajesh',22,'BE','rajesh123@gmail.com');
+INSERT into student value(5,'karthi',22,'B.Tech','Karthi123@gmail.com');
+
+CREATE TABLE Staff (staff_id INT PRIMARY KEY,name VARCHAR(50),department VARCHAR(50),salary INT);
+
+INSERT INTO Staff VALUES (101, 'Suresh', 'Admin', 25000);
+INSERT INTO Staff VALUES (102, 'Kiran', 'Accounts', 30000);
+INSERT INTO Staff VALUES (103, 'Meena', 'HR', 28000);
+
+SELECT * FROM Staff;
+
+UPDATE Staff SET salary = 32000 WHERE staff_id = 102;
+
+DELETE FROM Staff WHERE staff_id = 103;
+
+ALTER TABLE Staff MODIFY name VARCHAR(100);
+
+CREATE TABLE Product (product_id INT PRIMARY KEY,product_name VARCHAR(50),price INT,quantity INT);
+
+SELECT * FROM  Product;
+
+INSERT INTO Product VALUES (201, 'Laptop', 55000, 5);
+INSERT INTO Product VALUES (202, 'Mouse', 500, 50);
+INSERT INTO Product VALUES (203, 'Keyboard', 1200, 30);
+
+UPDATE Product SET price = 60000 WHERE product_id = 201;
+
+DELETE FROM Product WHERE product_id = 202;
+
+ALTER TABLE Product DROP COLUMN quantity;
+
+USE college_db;
+
+CREATE TABLE Customer (customer_id INT PRIMARY KEY,name VARCHAR(50),city VARCHAR(50),phone VARCHAR(15));
+
+INSERT INTO Customer VALUES (301, 'Amit', 'Chennai', '9876543210');
+INSERT INTO Customer VALUES (302, 'Divya', 'Madurai', '9123456780');
+INSERT INTO Customer VALUES (303, 'Rahul', 'Coimbatore', '9000011111');
+
+SELECT * FROM Customer;
+
+UPDATE Customer SET city = 'Bangalore' WHERE customer_id = 302;
+
+DELETE FROM Customer WHERE customer_id = 303;
+
+ALTER TABLE Customer ADD email VARCHAR(50);
+
+UPDATE Customer SET email = 'amit@gmail.com' WHERE customer_id = 301;
+UPDATE Customer SET email = 'divya@gmail.com' WHERE customer_id = 302;
+SELECT * FROM Customer;
+
+CREATE TABLE Employee (emp_id INT PRIMARY KEY,name VARCHAR(50),designation VARCHAR(50),salary INT
+);
+
+INSERT INTO Employee VALUES (401, 'Ramesh', 'Developer', 45000);
+INSERT INTO Employee VALUES (402, 'Sita', 'Tester', 35000);
+INSERT INTO Employee VALUES (403, 'John', 'Manager', 65000);
+
+SELECT * FROM Employee;
+
+SHOW TABLES;
+
+DESC Student;
+DESC Staff;
+DESC Product;
+DESC Customer;
+DESC Employee;
+
+UPDATE Employee SET salary = 70000 WHERE emp_id = 403;
+
+DELETE FROM Employee WHERE emp_id = 402;
+
+ALTER TABLE Employee RENAME COLUMN name TO emp_name;
+ 
+ -- for student table
+SELECT * FROM Student WHERE age = 20;
+SELECT * FROM Student WHERE age != 20;
+SELECT * FROM Student WHERE age > 20;
+SELECT * FROM Student WHERE age < 20;
+SELECT * FROM Student WHERE age >= 20;
+SELECT * FROM Student WHERE age <= 20;
+
+
+SELECT * FROM Student WHERE age > 18 AND course = 'BCA';
+SELECT * FROM Student WHERE age > 21 OR course = 'BA';
+SELECT * FROM Student WHERE NOT course = 'BCA';
+
+SELECT * FROM Student WHERE course IN ('BCA', 'BSC');
+
+SELECT * FROM Student WHERE age BETWEEN 18 AND 21;
+
+SELECT * FROM Student WHERE name LIKE 'A%';   
+SELECT * FROM Student WHERE name LIKE '%i%';  
+
+
+SELECT * FROM Student WHERE email IS NULL;
+
+SELECT * FROM Student ORDER BY age ASC;
+SELECT * FROM Student ORDER BY age DESC;
+
+SELECT COUNT(*) FROM Student;
+SELECT MIN(age) FROM Student;
+SELECT MAX(age) FROM Student;
+SELECT AVG(age) FROM Student;
+
+ -- for the staff table
+SELECT * FROM Staff WHERE salary = 30000;
+SELECT * FROM Staff WHERE salary > 25000;
+SELECT * FROM Staff WHERE salary < 30000;
+
+SELECT * FROM Staff WHERE salary > 25000 AND department = 'Accounts';
+SELECT * FROM Staff WHERE salary > 28000 OR department = 'HR';
+SELECT * FROM Staff WHERE NOT department = 'Admin';
+
+SELECT * FROM Staff WHERE department IN ('Admin', 'HR');
+
+SELECT * FROM Staff WHERE salary BETWEEN 25000 AND 32000;
+
+SELECT * FROM Staff WHERE name LIKE '%a%';
+
+SELECT * FROM Staff ORDER BY salary DESC;
+
+
+SELECT COUNT(*) FROM Staff;
+SELECT MIN(salary) FROM Staff;
+SELECT MAX(salary) FROM Staff;
+SELECT AVG(salary) FROM Staff;
+SELECT SUM(salary) FROM Staff;
+
+
+-- for product table 
+SELECT product_id, product_name, price, price + 100 AS new_price FROM Product;
+SELECT product_id, product_name, price, price - 50 AS discount_price FROM Product;
+SELECT product_id, product_name, price, price * 2 AS double_price FROM Product;
+SELECT product_id, product_name, price, price / 2 AS half_price FROM Product;
+SELECT product_id, product_name, price, price % 1000 AS remainder_price FROM Product;
+
+SELECT * FROM Product WHERE price = 500;
+SELECT * FROM Product WHERE price > 1000;
+SELECT * FROM Product WHERE price < 1000;
+
+SELECT * FROM Product WHERE price > 1000 AND product_name = 'Laptop';
+SELECT * FROM Product WHERE price > 1000 OR product_name = 'Mouse';
+
+SELECT * FROM Product WHERE price BETWEEN 500 AND 60000;
+
+SELECT * FROM Product WHERE product_name IN ('Laptop', 'Keyboard');
+
+SELECT * FROM Product WHERE product_name LIKE '%o%';
+
+SELECT * FROM Product ORDER BY price ASC;
+
+SELECT COUNT(*) FROM Product;
+SELECT MIN(price) FROM Product;
+SELECT MAX(price) FROM Product;
+SELECT AVG(price) FROM Product;
+SELECT SUM(price) FROM Product;
+
+
+-- for customer table
+SELECT * FROM Customer WHERE city = 'Chennai';
+SELECT * FROM Customer WHERE city != 'Chennai';
+
+SELECT * FROM Customer WHERE city = 'Chennai' AND name = 'Amit';
+SELECT * FROM Customer WHERE city = 'Chennai' OR city = 'Bangalore';
+SELECT * FROM Customer WHERE NOT city = 'Madurai';
+
+SELECT * FROM Customer WHERE city IN ('Chennai', 'Salem');
+
+SELECT * FROM Customer WHERE customer_id BETWEEN 301 AND 305;
+
+SELECT * FROM Customer WHERE name LIKE 'M%';
+SELECT * FROM Customer WHERE phone LIKE '%777%';
+
+SELECT * FROM Customer WHERE email IS NULL;
+
+SELECT * FROM Customer ORDER BY name ASC;
+
+SELECT COUNT(*) FROM Customer;
+SELECT MIN(customer_id) FROM Customer;
+SELECT MAX(customer_id) FROM Customer;
+
+
+-- employee table
+SELECT emp_id, emp_name, salary, salary + 5000 AS bonus_salary FROM Employee;
+SELECT emp_id, emp_name, salary, salary - 2000 AS cut_salary FROM Employee;
+SELECT emp_id, emp_name, salary, salary * 2 AS double_salary FROM Employee;
+SELECT emp_id, emp_name, salary, salary / 2 AS half_salary FROM Employee;
+SELECT emp_id, emp_name, salary, salary % 10000 AS remainder_salary FROM Employee;
+
+SELECT * FROM Employee WHERE salary = 45000;
+SELECT * FROM Employee WHERE salary > 40000;
+SELECT * FROM Employee WHERE salary < 50000;
+
+SELECT * FROM Employee WHERE salary > 40000 AND designation = 'Developer';
+SELECT * FROM Employee WHERE salary > 60000 OR designation = 'Manager';
+SELECT * FROM Employee WHERE NOT designation = 'Tester';
+
+SELECT * FROM Employee WHERE designation IN ('Developer', 'Manager');
+
+SELECT * FROM Employee WHERE salary BETWEEN 35000 AND 70000;
+
+SELECT * FROM Employee WHERE emp_name LIKE '%h%';
+
+SELECT * FROM Employee ORDER BY salary DESC;
+
+SELECT COUNT(*) FROM Employee;
+SELECT MIN(salary) FROM Employee;
+SELECT MAX(salary) FROM Employee;
+SELECT AVG(salary) FROM Employee;
+SELECT SUM(salary) FROM Employee;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
