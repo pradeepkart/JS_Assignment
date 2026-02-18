@@ -1,0 +1,185 @@
+CREATE DATABASE constraintsDB;
+USE constraintsDB;
+
+CREATE TABLE Customers (
+    CustomerID INT,
+    CustomerName VARCHAR(50),
+    City VARCHAR(50),
+    Email VARCHAR(60),
+    Phone VARCHAR(15),
+    PRIMARY KEY (CustomerID),
+    UNIQUE (Email),
+    UNIQUE (Phone),
+    UNIQUE (CustomerName, City)
+);
+
+CREATE TABLE Products (
+    ProductID INT,
+    ProductName VARCHAR(50),
+    Price DECIMAL(10,2),
+    Brand VARCHAR(50),
+    PRIMARY KEY (ProductID),
+    UNIQUE (ProductName),
+    UNIQUE (ProductName, Brand)
+);
+
+CREATE TABLE Orders (
+    OrderID INT,
+    CustomerID INT,
+    ProductID INT,
+    OrderDate DATE,
+    Quantity INT,
+    PRIMARY KEY (OrderID),
+    UNIQUE (CustomerID, ProductID, OrderDate),
+    CONSTRAINT fk_orders_customer FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    CONSTRAINT fk_orders_product FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+INSERT INTO Customers VALUES
+(1, 'Alice', 'New York', 'alice@gmail.com', '9991110001'),
+(2, 'Bob', 'London', 'bob@gmail.com', '9991110002'),
+(3, 'Charlie', 'Paris', 'charlie@gmail.com', '9991110003'),
+(4, 'David', 'Berlin', 'david@gmail.com', '9991110004');
+
+INSERT INTO Products VALUES
+(101, 'Laptop', 1200.00, 'Dell'),
+(102, 'Mouse', 25.00, 'Logitech'),
+(103, 'Keyboard', 50.00, 'HP');
+
+INSERT INTO Orders VALUES
+(1, 1, 101, '2023-01-01', 1),
+(2, 2, 102, '2023-01-02', 2),
+(3, 1, 103, '2023-01-03', 1);
+
+CREATE TABLE OrderItems (
+    OrderID INT,
+    ProductID INT,
+    Quantity INT,
+    PRIMARY KEY (OrderID, ProductID),
+    CONSTRAINT fk_orderitems_order FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    CONSTRAINT fk_orderitems_product FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+INSERT INTO OrderItems VALUES
+(1, 101, 1),
+(2, 102, 2),
+(3, 103, 1);
+
+ALTER TABLE Customers DROP PRIMARY KEY;
+
+ALTER TABLE Customers
+ADD CONSTRAINT pk_customers PRIMARY KEY (CustomerID);
+
+ALTER TABLE Products DROP PRIMARY KEY;
+
+ALTER TABLE Products
+ADD CONSTRAINT pk_products PRIMARY KEY (ProductID);
+
+ALTER TABLE Orders DROP PRIMARY KEY;
+
+ALTER TABLE Orders
+ADD CONSTRAINT pk_orders PRIMARY KEY (OrderID);
+
+ALTER TABLE Customers DROP INDEX Email;
+
+ALTER TABLE Customers
+ADD CONSTRAINT uq_customers_email UNIQUE (Email);
+
+ALTER TABLE Customers DROP INDEX Phone;
+
+ALTER TABLE Customers
+ADD CONSTRAINT uq_customers_phone UNIQUE (Phone);
+
+ALTER TABLE Products DROP INDEX ProductName;
+
+ALTER TABLE Products
+ADD CONSTRAINT uq_products_name UNIQUE (ProductName);
+
+ALTER TABLE Orders DROP INDEX CustomerID;
+
+ALTER TABLE Orders
+ADD CONSTRAINT uq_orders_composite UNIQUE (CustomerID, ProductID, OrderDate);
+
+ALTER TABLE OrderItems DROP PRIMARY KEY;
+
+ALTER TABLE OrderItems
+ADD CONSTRAINT pk_orderitems PRIMARY KEY (OrderID, ProductID);
+
+ALTER TABLE OrderItems DROP FOREIGN KEY fk_orderitems_order;
+ALTER TABLE OrderItems DROP FOREIGN KEY fk_orderitems_product;
+
+ALTER TABLE Orders DROP FOREIGN KEY fk_orders_customer;
+ALTER TABLE Orders DROP FOREIGN KEY fk_orders_product;
+
+ALTER TABLE Orders
+ADD CONSTRAINT fk_orders_customer FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
+
+ALTER TABLE Orders
+ADD CONSTRAINT fk_orders_product FOREIGN KEY (ProductID) REFERENCES Products(ProductID);
+
+ALTER TABLE OrderItems
+ADD CONSTRAINT fk_orderitems_order FOREIGN KEY (OrderID) REFERENCES Orders(OrderID);
+
+ALTER TABLE OrderItems
+ADD CONSTRAINT fk_orderitems_product FOREIGN KEY (ProductID) REFERENCES Products(ProductID);
+
+
+SELECT c.CustomerName, o.OrderID
+FROM Customers c
+INNER JOIN Orders o
+ON c.CustomerID = o.CustomerID;
+
+SELECT c.CustomerName, o.OrderID
+FROM Customers c
+LEFT JOIN Orders o
+ON c.CustomerID = o.CustomerID;
+
+SELECT p.ProductName, o.OrderID
+FROM Products p
+LEFT JOIN Orders o
+ON p.ProductID = o.ProductID;
+
+SELECT c.CustomerName, p.ProductName, o.OrderDate
+FROM Orders o
+INNER JOIN Customers c
+ON o.CustomerID = c.CustomerID
+INNER JOIN Products p
+ON o.ProductID = p.ProductID;
+
+SELECT DISTINCT c.CustomerName
+FROM Orders o
+INNER JOIN Customers c
+ON o.CustomerID = c.CustomerID
+INNER JOIN Products p
+ON o.ProductID = p.ProductID
+WHERE p.ProductName = 'Laptop';
+
+SELECT c.CustomerName, SUM(p.Price * o.Quantity) AS TotalSpent
+FROM Orders o
+INNER JOIN Customers c
+ON o.CustomerID = c.CustomerID
+INNER JOIN Products p
+ON o.ProductID = p.ProductID
+GROUP BY c.CustomerID, c.CustomerName;
+
+SELECT *
+FROM Orders
+WHERE CustomerID IS NULL;
+
+SELECT c.CustomerName, p.ProductName
+FROM Customers c
+CROSS JOIN Products p;
+
+SELECT c.CustomerName AS Customer, m.CustomerName AS Manager
+FROM Customers c
+LEFT JOIN Customers m
+ON c.ManagerID = m.CustomerID;
+
+SELECT DISTINCT c.CustomerName, p.ProductName
+FROM Orders o
+INNER JOIN Customers c
+ON o.CustomerID = c.CustomerID
+INNER JOIN Products p
+ON o.ProductID = p.ProductID
+WHERE c.City = 'New York'
+AND o.Quantity > 1;
