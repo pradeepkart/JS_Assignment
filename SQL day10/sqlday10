@@ -1,0 +1,45 @@
+create database amazon;
+use amazon;
+
+
+CREATE TABLE employees11 (
+emp_id INT PRIMARY KEY AUTO_INCREMENT,
+emp_name VARCHAR(50),
+department VARCHAR(50),
+city VARCHAR(50),
+salary INT
+);
+
+INSERT INTO employees11 (emp_name, department, city, salary) VALUES
+('Ravi', 'IT', 'Chennai', 50000),
+('Kiran', 'IT', 'Bangalore', 60000),
+('Anu', 'HR', 'Chennai', 45000),
+('Meena', 'HR', 'Delhi', 52000),
+('Arjun', 'Finance', 'Mumbai', 70000);
+
+-- 1. Create index on salary column
+CREATE INDEX idx_salary
+ON employees11(salary);
+
+-- 2. Create composite index for dept + city
+CREATE INDEX idx_dept_city
+ON employees11(department, city);
+
+-- 3. Create view showing only IT employees earning above 55,000
+CREATE VIEW IT_HighSalary AS
+SELECT *
+FROM employees11
+WHERE department = 'IT' AND salary > 55000;
+
+-- 4. Create view for HR employee names only
+CREATE VIEW HR_Employees AS
+SELECT emp_name
+FROM employees11
+WHERE department = 'HR';
+
+-- 5. Update salary of Ravi to 55,000 using view
+UPDATE IT_HighSalary
+SET salary = 55000
+WHERE emp_name = 'Ravi';
+
+select * from employees11;
