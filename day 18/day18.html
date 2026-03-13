@@ -217,7 +217,71 @@
             // sum(n);
 
 
+            class School{
+              constructor(std_id,std_name,std_marks){
+                          this.std_id = std_id;
+                          this.std_name = std_name;
+                          this.std_marks = std_marks; 
+              }
 
+              print(){
+                console.log(this.std_id);
+                console.log(this.std_name);
+                console.log(this.std_marks);
+              }
+              get(){
+                this.std_id = Number(prompt("enter the id:"));
+                this.std_name = prompt("enter the name:");
+                this.std_marks = Number(prompt("enter the marks:"))
+              }
+            }
+
+            class Parent extends School{
+    
+                  constructor(std_id,std_name,std_marks,p_name,p_no){
+                    super(std_id,std_name,std_marks);
+                    this.p_name = p_name;
+                    this.p_no = p_no;
+              
+                  }
+                  print1(){
+                    this.print();
+                    console.log(this.p_name);
+                    console.log(this.p_no)
+                  }
+            }
+
+            class Staff extends Parent{
+              constructor(std_id,std_name,std_marks,p_name,p_no,s_name,s_id){
+                   super(std_id,std_name,std_marks,p_name,p_no);
+                   this.s_name = s_name;
+                   this.s_id = s_id;
+              }
+
+              print2(){
+                this.print();
+                this.print1();
+                console.log(this.s_name);
+                console.log(this.s_id);
+              }
+            }
+
+            let student1 = new School(1,"pk",90)
+            student1.print();
+            let parent = new Parent(1,"pk",90,"mh",10)
+            parent.print1();
+            let staff = new Staff(1,"pk",1,"mh",10,"ak",100)
+            staff.print2();
+           
+          //  function sum(a=10,b=20,c=30){
+          //   let sum = a+b+c;
+          //   console.log(`sum of ${a}+${b}+${c}=${a+b+c}`);
+          //  }
+          //  sum();
+          //  sum(1);
+          //  sum(1,2);
+          //  sum(5,6,7);
+        
 
 
 

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Task 1: Person Class */
+
+class Person {
+constructor(name, age){
+this.name = name;
+this.age = age;
+}
+
+greet(){
+console.log("Hi, my name is " + this.name + " and I am " + this.age + " years old.");
+}
+}
+
+const p1 = new Person("Alex",25);
+p1.greet();
+
+
+
+/* Task 2: Student Grade System */
+
+class Student{
+constructor(name, marks){
+this.name = name;
+this.marks = marks;
+}
+
+getGrade(){
+if(this.marks >= 90) return "A";
+else if(this.marks >= 75) return "B";
+else if(this.marks >= 50) return "C";
+else return "Fail";
+}
+}
+
+const s1 = new Student("John",92);
+const s2 = new Student("Sara",68);
+
+console.log(s1.name + " Grade: " + s1.getGrade());
+console.log(s2.name + " Grade: " + s2.getGrade());
+
+
+
+/* Task 3: Bank Account */
+
+class BankAccount{
+constructor(accountHolder, balance){
+this.accountHolder = accountHolder;
+this.balance = balance;
+}
+
+deposit(amount){
+this.balance += amount;
+console.log("Deposited:",amount);
+}
+
+withdraw(amount){
+if(amount > this.balance){
+console.log("Insufficient balance");
+}else{
+this.balance -= amount;
+console.log("Withdrawn:",amount);
+}
+}
+
+checkBalance(){
+console.log("Balance:",this.balance);
+}
+}
+
+const acc = new BankAccount("Alex",1000);
+acc.deposit(500);
+acc.withdraw(300);
+acc.checkBalance();
+
+
+
+/* Task 4: Car Rental System */
+
+class Car{
+constructor(brand, model){
+this.brand = brand;
+this.model = model;
+this.isAvailable = true;
+}
+
+rentCar(){
+this.isAvailable = false;
+console.log(this.brand + " " + this.model + " rented");
+}
+
+returnCar(){
+this.isAvailable = true;
+console.log(this.brand + " " + this.model + " returned");
+}
+}
+
+const car1 = new Car("Toyota","Camry");
+const car2 = new Car("Honda","Civic");
+
+car1.rentCar();
+car1.returnCar();
+
+
+
+/* Task 5: Shopping Cart */
+
+class ShoppingCart{
+constructor(){
+this.items = [];
+}
+
+addItem(item){
+this.items.push(item);
+}
+
+removeItem(itemName){
+this.items = this.items.filter(item => item.name !== itemName);
+}
+
+getTotalPrice(){
+let total = this.items.reduce((sum,item) => sum + item.price,0);
+console.log("Total Price:", total);
+}
+}
+
+const cart = new ShoppingCart();
+cart.addItem({name:"Phone", price:500});
+cart.addItem({name:"Headphones", price:100});
+cart.removeItem("Phone");
+cart.getTotalPrice();
+
+
+
+/* Inheritance Task 1: Animal -> Dog */
+
+class Animal{
+constructor(name){
+this.name = name;
+}
+
+speak(){
+console.log("Animal makes a sound");
+}
+}
+
+class Dog extends Animal{
+speak(){
+console.log(this.name + " says: Woof!");
+}
+}
+
+const dog = new Dog("Buddy");
+dog.speak();
+
+
+
+/* Inheritance Task 2: Employee -> Manager */
+
+class Employee{
+constructor(name,salary){
+this.name = name;
+this.salary = salary;
+}
+
+getDetails(){
+return this.name + " Salary: " + this.salary;
+}
+}
+
+class Manager extends Employee{
+constructor(name,salary,department){
+super(name,salary);
+this.department = department;
+}
+
+getDetails(){
+return super.getDetails() + " Department: " + this.department;
+}
+}
+
+const m = new Manager("Alice",80000,"IT");
+console.log(m.getDetails());
+
+
+
+/* Inheritance Task 3: Shape -> Rectangle */
+
+class Shape{
+getArea(){
+return 0;
+}
+}
+
+class Rectangle extends Shape{
+constructor(length,width){
+super();
+this.length = length;
+this.width = width;
+}
+
+getArea(){
+return this.length * this.width;
+}
+}
+
+const shape = new Shape();
+const rect = new Rectangle(10,5);
+
+console.log(shape.getArea());
+console.log(rect.getArea());
+
+
+
+/* Inheritance Task 4: Vehicle -> ElectricCar */
+
+class Vehicle{
+constructor(brand,speed){
+this.brand = brand;
+this.speed = speed;
+}
+
+accelerate(value){
+this.speed += value;
+console.log("Speed:",this.speed);
+}
+}
+
+class ElectricCar extends Vehicle{
+constructor(brand,speed,batteryLevel){
+super(brand,speed);
+this.batteryLevel = batteryLevel;
+}
+
+chargeBattery(){
+this.batteryLevel = 100;
+console.log("Battery fully charged");
+}
+}
+
+const ecar = new ElectricCar("Tesla",60,40);
+ecar.accelerate(20);
+ecar.chargeBattery();
+
+
+
+/* Inheritance Task 5: User -> Admin */
+
+class User{
+constructor(username){
+this.username = username;
+}
+
+login(){
+console.log(this.username + " logged in");
+}
+}
+
+class Admin extends User{
+login(){
+console.log("Admin " + this.username + " logged in");
+}
+
+deleteUser(username){
+console.log("User " + username + " deleted");
+}
+}
+
+const admin = new Admin("superAdmin");
+admin.login();
+admin.deleteUser("John");
+    </script>
+</body>
+</html>
