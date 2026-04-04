@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap Services Page</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Task 1 : Responsive Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+<a class="navbar-brand" href="#">MyCompany</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+</ul>
+</div>
+
+</div>
+</nav>
+
+
+<!-- Task 3 : Buttons and Alert -->
+<div class="container mt-4">
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+Welcome to our Services Page!
+<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-outline-danger">Danger</button>
+<button class="btn btn-outline-success">Outline Success</button>
+
+</div>
+
+
+<!-- Task 2 : 3 Card Layout -->
+<div class="container mt-5">
+
+<h2 class="text-center mb-4">Our Services</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="card">
+<img src="https://via.placeholder.com/300x200" class="card-img-top">
+<div class="card-body">
+<h5 class="card-title">Web Development</h5>
+<p class="card-text">We build responsive and modern websites.</p>
+<a href="#" class="btn btn-primary">Learn More</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card">
+<img src="https://via.placeholder.com/300x200" class="card-img-top">
+<div class="card-body">
+<h5 class="card-title">App Development</h5>
+<p class="card-text">Mobile applications for Android and iOS.</p>
+<a href="#" class="btn btn-success">Learn More</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card">
+<img src="https://via.placeholder.com/300x200" class="card-img-top">
+<div class="card-body">
+<h5 class="card-title">Digital Marketing</h5>
+<p class="card-text">Grow your business with our marketing strategies.</p>
+<a href="#" class="btn btn-warning">Learn More</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- Task 4 : Contact Form -->
+<div class="container mt-5 mb-5">
+
+<h2 class="text-center mb-4">Contact Us</h2>
+
+<form>
+
+<div class="mb-3">
+<label class="form-label">Name</label>
+<input type="text" class="form-control" placeholder="Enter your name">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" placeholder="Enter your email">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Message</label>
+<textarea class="form-control" rows="4"></textarea>
+</div>
+
+<button class="btn btn-primary">Submit</button>
+
+</form>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
