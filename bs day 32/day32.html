@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap One Page Site</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+<a class="navbar-brand" href="#">MySite</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navmenu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="bg-primary text-white text-center p-5">
+<h1 class="mb-3">Welcome to My Website</h1>
+<p class="mb-4">Learn Bootstrap with simple examples</p>
+
+<button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+Open Welcome Modal
+</button>
+</section>
+
+
+<!-- Task 1: Visible only on large screens -->
+<div class="container mt-4 d-none d-lg-block">
+<div class="alert alert-info text-center">
+This section is visible only on large screens.
+</div>
+</div>
+
+
+<!-- Task 4: Feature list with icons -->
+<section class="container mt-5">
+
+<h2 class="text-center text-primary mb-4">Features</h2>
+
+<div class="d-flex align-items-center mb-2">
+<i class="bi bi-check-circle-fill text-success me-2"></i>
+<span>Responsive Design</span>
+</div>
+
+<div class="d-flex align-items-center mb-2">
+<i class="bi bi-check-circle-fill text-success me-2"></i>
+<span>Easy to Customize</span>
+</div>
+
+<div class="d-flex align-items-center mb-2">
+<i class="bi bi-check-circle-fill text-success me-2"></i>
+<span>Modern UI Components</span>
+</div>
+
+</section>
+
+
+<!-- Task 3: Carousel -->
+<div class="container mt-5">
+
+<div id="carouselExample" class="carousel slide">
+
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<img src="https://via.placeholder.com/900x300" class="d-block w-100">
+</div>
+
+<div class="carousel-item">
+<img src="https://via.placeholder.com/900x300/ff9999" class="d-block w-100">
+</div>
+
+<div class="carousel-item">
+<img src="https://via.placeholder.com/900x300/99ccff" class="d-block w-100">
+</div>
+
+</div>
+
+<button class="carousel-control-prev" data-bs-target="#carouselExample" data-bs-slide="prev">
+<span class="carousel-control-prev-icon"></span>
+</button>
+
+<button class="carousel-control-next" data-bs-target="#carouselExample" data-bs-slide="next">
+<span class="carousel-control-next-icon"></span>
+</button>
+
+</div>
+
+</div>
+
+
+<!-- Task 6: Responsive 3 Column Layout -->
+<section class="container mt-5">
+
+<h2 class="text-center text-primary mb-4">Our Services</h2>
+
+<div class="row">
+
+<div class="col-lg-4 col-md-6 mb-3">
+<div class="card p-3">
+<h5>Web Development</h5>
+<p>Build modern websites.</p>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-3">
+
+<!-- Task 7: Nested Grid -->
+<div class="row">
+
+<div class="col-6">
+<div class="card p-3 text-center">Sub 1</div>
+</div>
+
+<div class="col-6">
+<div class="card p-3 text-center">Sub 2</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-4 col-md-12 mb-3">
+<div class="card p-3">
+<h5>Marketing</h5>
+<p>Promote your business.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Contact Form -->
+<section class="container mt-5 mb-5">
+
+<h2 class="text-center text-primary mb-4">Contact Us</h2>
+
+<form>
+
+<div class="mb-3">
+<label class="form-label">Name</label>
+<input type="text" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input type="email" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Message</label>
+<textarea class="form-control"></textarea>
+</div>
+
+<button class="btn btn-primary">Submit</button>
+
+</form>
+
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center p-3">
+<p class="mb-0">© 2026 MySite | Bootstrap Assignment</p>
+</footer>
+
+
+<!-- Task 2: Modal -->
+<div class="modal fade" id="welcomeModal">
+<div class="modal-dialog">
+<div class="modal-content">
+
+<div class="modal-header">
+<h5 class="modal-title">Welcome</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body">
+Welcome to our Bootstrap website!
+</div>
+
+<div class="modal-footer">
+<button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
