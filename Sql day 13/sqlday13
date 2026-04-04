@@ -1,0 +1,170 @@
+-- 1. Employees who earn more than the average salary
+SELECT emp_name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+-- 2. Employees who work in the IT department
+SELECT emp_name
+FROM employees
+WHERE dept_id = (
+    SELECT dept_id 
+    FROM departments 
+    WHERE dept_name = 'IT'
+);
+
+-- 3. Employees who earn the highest salary
+SELECT emp_name, salary
+FROM employees
+WHERE salary = (SELECT MAX(salary) FROM employees);
+
+-- 4. Employees who do not belong to any department
+SELECT emp_name
+FROM employees
+WHERE dept_id IS NULL;
+
+-- 5. Employees working on at least one project
+SELECT emp_name
+FROM employees
+WHERE emp_id IN (
+    SELECT emp_id 
+    FROM emp_projects
+);
+
+-- 6. Employees NOT working on any project
+SELECT emp_name
+FROM employees
+WHERE emp_id NOT IN (
+    SELECT emp_id 
+    FROM emp_projects
+);
+
+-- 7. Departments that have at least one employee
+SELECT dept_name
+FROM departments
+WHERE dept_id IN (
+    SELECT dept_id 
+    FROM employees
+);
+
+-- 8. Departments with no employees
+SELECT dept_name
+FROM departments
+WHERE dept_id NOT IN (
+    SELECT dept_id 
+    FROM employees 
+    WHERE dept_id IS NOT NULL
+);
+
+-- 9. Employees who earn more than their manager (Correlated)
+SELECT e.emp_name
+FROM employees e
+WHERE salary > (
+    SELECT salary 
+    FROM employees m
+    WHERE m.emp_id = e.manager_id
+);
+
+-- 10. Employees who work in departments located in Tokyo
+SELECT emp_name
+FROM employees
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM locations
+    WHERE city = 'Tokyo'
+);
+
+-- 11. Employees working on the “Website” project
+SELECT emp_name
+FROM employees
+WHERE emp_id IN (
+    SELECT emp_id
+    FROM emp_projects
+    WHERE project_id = (
+        SELECT project_id
+        FROM projects
+        WHERE project_name = 'Website'
+    )
+);
+
+-- 12. Projects assigned to employees from IT department
+SELECT project_name
+FROM projects
+WHERE project_id IN (
+    SELECT project_id
+    FROM emp_projects
+    WHERE emp_id IN (
+        SELECT emp_id
+        FROM employees
+        WHERE dept_id = (
+            SELECT dept_id
+            FROM departments
+            WHERE dept_name = 'IT'
+        )
+    )
+);
+
+-- 13. Employees who are managers
+SELECT emp_name
+FROM employees
+WHERE emp_id IN (
+    SELECT manager_id
+    FROM employees
+    WHERE manager_id IS NOT NULL
+);
+
+-- 14. Employees who are NOT managers
+SELECT emp_name
+FROM employees
+WHERE emp_id NOT IN (
+    SELECT manager_id
+    FROM employees
+    WHERE manager_id IS NOT NULL
+);
+
+-- 15. Departments that have projects
+SELECT dept_name
+FROM departments
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM projects
+);
+
+-- 16. Departments that do not have projects
+SELECT dept_name
+FROM departments
+WHERE dept_id NOT IN (
+    SELECT dept_id
+    FROM projects
+);
+
+-- 17. Employees who earn more than the average salary of their department
+SELECT e.emp_name, e.salary
+FROM employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+    WHERE dept_id = e.dept_id
+);
+
+-- 18. Second highest salary
+SELECT MAX(salary)
+FROM employees
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+-- 19. Employees working in departments with more than one employee
+SELECT emp_name
+FROM employees
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM employees
+    GROUP BY dept_id
+    HAVING COUNT(*) > 1
+);
+
+-- 20. Employees whose department has a location
+SELECT emp_name
+FROM employees
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM locations
+);
