@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Task 1
+    function check(n){
+        if(n%2==0){
+            console.log("Even");
+        }
+        else{
+            console.log("Odd");
+        }
+    }
+   check(10);
+
+   //Task 2-
+       function sum(){
+        let sum=0;
+        for(let i=0;i<50;i++){
+            sum+=i;
+        }
+        return sum;
+       }
+       console.log(sum());
+
+    //Task 3-
+    
+    function fact(num){
+        let fact1=1;
+        for(let i=1;i<=num;i++){
+            fact1*=i;
+        }
+        return fact1;
+    }
+    console.log(fact(5));
+
+    //Task 4----
+    let sumArray=[1,2,3,4,5];
+    function arr(sumArray){
+        let sum=0;
+        for(let i=0;i<=sumArray.length;i++){
+            sum+=i;
+        }
+        return sum;
+    }
+    console.log(arr(sumArray));
+
+    //Task 5-
+    function largest(a,b,c){
+        if(a>=b && a>=c){
+            return a;
+        }
+        else if(b>=a && b>=c){
+            return b;
+        }
+        else{
+            return c;
+        }
+    }
+    console.log(largest(10,15,25));
+
+    //Task 6-
+    let arrCount=[1,2,3,4,5,6,7,8];
+    function countArr(arrCount){
+        let count=0;
+        for(let i=0;i<arrCount.length;i++){
+            if(i%2==0){
+                count++;
+            }
+        }
+        return count;
+    }
+    console.log(countArr(arrCount));
+
+    //Task 7--
+    function multiple(num){
+     
+      for(let i=1;i<=10;i++){
+      console.log(num + "X" + i + "=" + (num*i));
+      }
+    }
+  multiple(5);
+
+  //Task 8---
+  function check1(mark){
+    if(mark>=25)
+    console.log("Pass")
+  else
+  console.log("Fail")
+  }
+  check1(40);
+
+  //Task 9---
+    function check2(st,end){
+      let sum=0;
+      for(let i=st;i<=end;i++){
+        if(i%2!=0){
+          sum+=i;
+        }
+      }
+      return sum;
+    }
+  console.log(check2(1,20));
+
+  //Task 10
+  let arr1=[1,2,3,4];
+  function arrAvg(arr){
+    let sum=0;
+    for(let i=0;i<arr.length;i++){
+      sum+=arr[i];
+    }
+    let avg=sum/arr.length;
+    return avg;
+  }
+ console.log(arrAvg(arr1));
+    </script>
+</body>
+</html>
